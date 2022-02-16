@@ -1,10 +1,10 @@
 $(document).ready(function () {
   let $element = $("#btnSubmit");
   let $input = $("input[type='text']");
-  let $list = $("<ul></ul>")
-$('body').append('<div id="theDiv"><div/>');
-$("body").append($list)
+  let $list = $("<ul></ul>");
 
+$("body").append($list);
+$('body').append('<div id="theDiv"><div/>');
 
 
 
@@ -29,8 +29,31 @@ $("body").append($list)
   $element.on("click", notify);
   function notify(event){event.preventDefault()
 
-let listItem = $("<li></li");
-$list.text($input.val());
+let $listItem = $("<li></li");
+$listItem.text($input.val());
+$list.append($listItem);
+
+
+const myColors = ["red", "yellow", "pink", "green", "purple"];
+
+             
+             const getRandomColor = () => {
+                 const myRandomColor = myColors[Math.floor(Math.random() * myColors.length)];
+                 return myRandomColor;
+             }
+
+             
+             $('li').click((event) => {
+                 const thisRandomColor = getRandomColor();
+                 $(event.target).css('background-color', thisRandomColor);
+            })
+
+            
+            $('li').dblclick((event) => {
+                $(event.target).remove();
+            })
+
+
 
     // alert("Button has been clicked");
     // let newH2 = $("<h2>" + $("#inputText").val() + "</h2>");
